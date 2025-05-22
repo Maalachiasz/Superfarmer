@@ -1,4 +1,5 @@
-package com.example.superfarmer.model;
+package model;
 
-public class AnimalType {
+public enum AnimalType {
+    KROLIK, OWCA, SWINIA, KROWA, KON
 }

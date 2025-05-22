@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.superfarmer.GameView"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.superfarmer.controller.GameController">
 
-</AnchorPane>
+    <top>
+        <HBox spacing="20" padding="10" alignment="CENTER">
+            <Label text="Zasoby gracza:"/>
+            <Label fx:id="playerResources"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" padding="10">
+            <Label text="Bank:"/>
+            <Label fx:id="bankResources"/>
+
+            <HBox spacing="10">
+                <ComboBox fx:id="giveAnimal"/>
+                <TextField fx:id="giveAmount" promptText="Ilość"/>
+                <ComboBox fx:id="getAnimal"/>
+                <Button text="Wymień" onAction="#handleExchange"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="10" padding="10" alignment="CENTER">
+            <Button text="Rzuć kośćmi" onAction="#handleRollDice"/>
+            <Label fx:id="diceResult" text="Wynik rzutu: -"/>
+        </VBox>
+    </bottom>
+
+    <right>
+        <VBox padding="10" spacing="5">
+            <Label text="Tabela wymian:" style="-fx-font-weight: bold"/>
+            <Label text="6 królików = 1 owca"/>
+            <Label text="2 owce = 1 świnia"/>
+            <Label text="3 świnie = 1 krowa"/>
+            <Label text="2 krowy = 1 koń"/>
+        </VBox>
+    </right>
+
+</BorderPane>
