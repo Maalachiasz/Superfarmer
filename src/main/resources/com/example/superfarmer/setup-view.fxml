@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.superfarmer.SetupController"
-      spacing="10" alignment="CENTER">
-    <Label text="Wybierz liczbę przeciwników (1-3):"/>
-    <Spinner fx:id="opponentSpinner" editable="false"/>
-    <Button text="Rozpocznij grę" onAction="#startGame"/>
+<VBox spacing="15" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.superfarmer.SetupController"
+      style="-fx-padding: 30;">
+
+    <Label text="Wybierz liczbę przeciwników:" style="-fx-font-size: 14;"/>
+    <ComboBox fx:id="opponentCountBox"/>
+
+    <Button fx:id="startButton" text="Start gry" onAction="#startGame"/>
 </VBox>

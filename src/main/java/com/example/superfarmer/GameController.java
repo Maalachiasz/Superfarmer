@@ -23,7 +23,11 @@ public class GameController {
     private int currentPlayerIndex = 0;
     private boolean canExchange = true;
 
+    private int opponentCount = 2; // domyślnie
 
+    public void setOpponentCount(int count) {
+        this.opponentCount = count;
+    }
 
     @FXML
     private Label playerResources;
@@ -52,8 +56,10 @@ public class GameController {
         player = new Player("Ty");
         bank = new Bank();
 
-        opponents.add(new Player("Bot 1"));
-        opponents.add(new Player("Bot 2"));
+        for (int i = 1; i <= opponentCount; i++) {
+            opponents.add(new Player("Bot " + i));
+        }
+
 
         allPlayers.add(player);
         allPlayers.addAll(opponents);
@@ -122,6 +128,10 @@ public class GameController {
         System.out.println("Aktualny gracz: " + allPlayers.get(currentPlayerIndex).getName());
         Player current = allPlayers.get(currentPlayerIndex);
         String[] result = Dice.rollTwoDice();
+        if (current != player) {
+            showAlert(current.getName() + " rzuca kośćmi: " + result[0] + " + " + result[1], Alert.AlertType.INFORMATION);
+        }
+
 
         if (current == player) {
             diceResult.setText("Twój rzut: " + result[0] + " + " + result[1]);

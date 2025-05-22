@@ -1,35 +1,45 @@
 package com.example.superfarmer;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Button;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 
 public class SetupController {
 
     @FXML
-    private Spinner<Integer> opponentSpinner;
+    private ComboBox<Integer> opponentCountBox;
+
+    @FXML
+    private Button startButton;
 
     @FXML
     public void initialize() {
-        opponentSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 3, 1));
+        // Wypełniamy ComboBox liczbami od 1 do 3
+        opponentCountBox.getItems().addAll(1, 2, 3);
+        //opponentCountBox.setValue(2); // domyślnie 2 boty
     }
 
     @FXML
-    private void startGame(ActionEvent event) {
+    private void startGame() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/superfarmer/game-view.fxml"));
+            int opponentCount = opponentCountBox.getValue();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game-view.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) opponentSpinner.getScene().getWindow();
+            GameController controller = loader.getController();
+            controller.setOpponentCount(opponentCount); // przekazanie liczby botów
+            controller.initGame();
+
+            Stage stage = (Stage) startButton.getScene().getWindow();
             stage.setScene(new Scene(root));
-        } catch (IOException e) {
+            stage.show();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
