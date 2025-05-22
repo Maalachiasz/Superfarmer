@@ -5,17 +5,23 @@
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.superfarmer.controller.GameController">
+            fx:controller="com.example.superfarmer.GameController">
 
     <top>
-        <HBox spacing="20" padding="10" alignment="CENTER">
+        <HBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <Label text="Zasoby gracza:"/>
             <Label fx:id="playerResources"/>
         </HBox>
     </top>
 
     <center>
-        <VBox spacing="10" padding="10">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <Label text="Bank:"/>
             <Label fx:id="bankResources"/>
 
@@ -29,14 +35,20 @@
     </center>
 
     <bottom>
-        <VBox spacing="10" padding="10" alignment="CENTER">
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <Button text="Rzuć kośćmi" onAction="#handleRollDice"/>
             <Label fx:id="diceResult" text="Wynik rzutu: -"/>
         </VBox>
     </bottom>
 
     <right>
-        <VBox padding="10" spacing="5">
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <Label text="Tabela wymian:" style="-fx-font-weight: bold"/>
             <Label text="6 królików = 1 owca"/>
             <Label text="2 owce = 1 świnia"/>

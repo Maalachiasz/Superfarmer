@@ -1,4 +1,4 @@
-package com.example.superfarmer.controller;
+package com.example.superfarmer;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
