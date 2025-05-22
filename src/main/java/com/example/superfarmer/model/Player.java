@@ -35,4 +35,28 @@ public class Player {
     public String getName() {
         return name;
     }
+    public boolean hasSmallDog() {
+        return resources.getOrDefault(AnimalType.MALY_PIES, 0) > 0;
+    }
+
+    public boolean hasBigDog() {
+        return resources.getOrDefault(AnimalType.DUZY_PIES, 0) > 0;
+    }
+
+    public void useSmallDog() {
+        removeAnimal(AnimalType.MALY_PIES, 1);
+    }
+
+    public void useBigDog() {
+        removeAnimal(AnimalType.DUZY_PIES, 1);
+    }
+
+    public int getAnimalCount(AnimalType type) {
+        return resources.getOrDefault(type, 0);
+    }
+
+    public void setAnimalCount(AnimalType type, int count) {
+        resources.put(type, count);
+    }
+
 }

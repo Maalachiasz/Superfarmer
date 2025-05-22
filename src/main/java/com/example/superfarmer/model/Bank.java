@@ -12,6 +12,8 @@ public class Bank {
         stock.put(AnimalType.SWINIA, 20);
         stock.put(AnimalType.KROWA, 12);
         stock.put(AnimalType.KON, 6);
+        stock.put(AnimalType.MALY_PIES, 4);
+        stock.put(AnimalType.DUZY_PIES, 2);
     }
 
     public boolean exchange(Player player, AnimalType give, AnimalType get, int amount) {
@@ -35,8 +37,27 @@ public class Bank {
         if (give == AnimalType.OWCA && get == AnimalType.SWINIA) return 2;
         if (give == AnimalType.SWINIA && get == AnimalType.KROWA) return 3;
         if (give == AnimalType.KROWA && get == AnimalType.KON) return 2;
+
+        // Wymiana psów:
+        if (give == AnimalType.OWCA && get == AnimalType.MALY_PIES) return 1;
+        if (give == AnimalType.KROWA && get == AnimalType.DUZY_PIES) return 1;
+
         return 0;
     }
+
+    public boolean removeAnimal(AnimalType type, int qty) {
+        int current = stock.getOrDefault(type, 0);
+        if (current >= qty) {
+            stock.put(type, current - qty);
+            return true;
+        }
+        return false;
+    }
+
+    public void addAnimal(AnimalType type, int qty) {
+        stock.put(type, stock.getOrDefault(type, 0) + qty);
+    }
+
 
     public Map<AnimalType, Integer> getResources() {
         return stock;
