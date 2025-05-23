@@ -12,7 +12,7 @@ public class Player {
         for (AnimalType type : AnimalType.values()) {
             resources.put(type, 0);
         }
-        resources.put(AnimalType.KROLIK, 1); // start z 1 królikiem
+        resources.put(AnimalType.KROLIK, 1);
     }
 
     public boolean removeAnimal(AnimalType type, int qty) {

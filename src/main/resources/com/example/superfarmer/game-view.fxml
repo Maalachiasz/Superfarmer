@@ -8,17 +8,17 @@
             fx:controller="com.example.superfarmer.GameController">
 
     <top>
-        <HBox spacing="20" alignment="CENTER">
+        <HBox spacing="20" alignment="CENTER" style="-fx-border-color: black;">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
             <Label text="Zasoby gracza:"/>
-            <Label fx:id="playerResources"/>
+            <Label fx:id="playerResources" style="-fx-text-fill: green;"/>
         </HBox>
     </top>
 
     <left>
-        <VBox fx:id="opponentsBox" spacing="10">
+        <VBox fx:id="opponentsBox" spacing="10" style="-fx-border-color: black;">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
@@ -26,9 +26,8 @@
         </VBox>
     </left>
 
-
     <center>
-        <VBox spacing="10">
+        <VBox spacing="10" style="-fx-border-color: black;">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
@@ -45,17 +44,17 @@
     </center>
 
     <bottom>
-        <VBox spacing="10" alignment="CENTER">
+        <VBox spacing="10" alignment="CENTER" style="-fx-border-color: black;">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
-            <Button fx:id="rollBtn" text="Rzuć kośćmi" onAction="#handleRollDice"/>
+            <Button text="Rzuć kośćmi" onAction="#handleRollDice" fx:id="rollBtn"/>
             <Label fx:id="diceResult" text="Wynik rzutu: -"/>
         </VBox>
     </bottom>
 
     <right>
-        <VBox spacing="5">
+        <VBox spacing="5" style="-fx-border-color: black;">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
@@ -64,9 +63,6 @@
             <Label text="2 owce = 1 świnia"/>
             <Label text="3 świnie = 1 krowa"/>
             <Label text="2 krowy = 1 koń"/>
-            <Label text="1 owca = 1 mały pies"/>
-            <Label text="1 krowa = 1 duży pies"/>
         </VBox>
     </right>
-
 </BorderPane>

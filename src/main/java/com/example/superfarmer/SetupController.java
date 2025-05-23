@@ -18,9 +18,7 @@ public class SetupController {
 
     @FXML
     public void initialize() {
-        // Wypełniamy ComboBox liczbami od 1 do 3
         opponentCountBox.getItems().addAll(1, 2, 3);
-        //opponentCountBox.setValue(2); // domyślnie 2 boty
     }
 
     @FXML
@@ -32,7 +30,7 @@ public class SetupController {
             Parent root = loader.load();
 
             GameController controller = loader.getController();
-            controller.setOpponentCount(opponentCount); // przekazanie liczby botów
+            controller.setOpponentCount(opponentCount);
             controller.initGame();
 
             Stage stage = (Stage) startButton.getScene().getWindow();

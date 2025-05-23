@@ -41,7 +41,6 @@ public class GameController {
     @FXML
     private Button rollBtn;
 
-    // Minimalna inicjalizacja interfejsu
     @FXML
     public void initialize() {
         giveAnimal.getItems().addAll(AnimalType.values());
@@ -97,13 +96,11 @@ public class GameController {
 
     @FXML
     private void handleRollDice() {
-        // Process each player's turn one by one
         for (int i = 0; i < allPlayers.size(); i++) {
             Player currentPlayer = allPlayers.get(i);
             processTurn(currentPlayer);
         }
 
-        // Reset for next round
         canExchange = true;
     }
 
@@ -186,15 +183,12 @@ public class GameController {
     }
 
     private void handleBreeding(Player currentPlayer, String[] dice) {
-        // Count what THIS specific player rolled
         Map<AnimalType, Integer> rolledCount = new EnumMap<>(AnimalType.class);
 
-        // Initialize all counts to 0
         for (AnimalType type : AnimalType.values()) {
             rolledCount.put(type, 0);
         }
 
-        // Count rolled animals for THIS player only
         for (String roll : dice) {
             try {
                 AnimalType type = AnimalType.valueOf(roll);
@@ -207,24 +201,18 @@ public class GameController {
             }
         }
 
-        // Calculate and apply breeding for THIS player only
         for (AnimalType type : AnimalType.values()) {
             if (type == AnimalType.MALY_PIES || type == AnimalType.DUZY_PIES) continue;
 
-            // Get THIS player's current animals
             int currentAnimals = currentPlayer.getAnimalCount(type);
-            // Add rolled count for breeding calculation
             int rolledAnimals = rolledCount.get(type);
-            // Calculate total for breeding
             int totalForBreeding = currentAnimals + rolledAnimals;
-            // Calculate offspring
             int offspring = totalForBreeding / 2;
 
             System.out.println(currentPlayer.getName() + " - " + type + ": has " + currentAnimals +
                     ", rolled " + rolledAnimals + ", breeding total " + totalForBreeding +
                     ", offspring " + offspring);
 
-            // Add only offspring to THIS specific player (not rolled animals)
             if (offspring > 0 && bank.removeAnimal(type, offspring)) {
                 currentPlayer.addAnimal(type, offspring);
                 System.out.println("Added " + offspring + " " + type + " to " + currentPlayer.getName());
