@@ -64,6 +64,8 @@
             <Label text="2 owce = 1 świnia"/>
             <Label text="3 świnie = 1 krowa"/>
             <Label text="2 krowy = 1 koń"/>
+            <Label text="1 owca = 1 mały pies"/>
+            <Label text="1 krowa = 1 duży pies"/>
         </VBox>
     </right>
 
